@@ -1,79 +1,27 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# App Structure
 
-# Getting Started
+React Native is an open-source mobile application framework developed by Facebook that allows you to build mobile apps using JavaScript and React. With React Native, you can create mobile apps for both iOS and Android platforms from a single codebase. It offers several advantages including
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+- Cross-Platform Development: React Native enables you to write code once and run it on both iOS and Android platforms. This saves development time and resources compared to building separate native apps for each platform.
 
-## Step 1: Start the Metro Server
+- JavaScript / Typescript and React: React Native uses the same declarative and component-based approach as React.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+- Reusable Components: React Native allows you to create reusable UI components that can be shared across different parts of your app or even between multiple apps.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+##### In this typical React Native app project structure, the following folder names will contain specific types of files and code:
 
-```bash
-# using npm
-npm start
+**android**: This folder contains all the Android-specific code and resources for your React Native app. It includes the AndroidManifest.xml file, Java or Kotlin source code, and resource files (e.g., drawables, layouts) necessary for building and configuring your Android app.
 
-# OR using Yarn
-yarn start
-```
+**components**: The components folder is where you organize and store your custom user interface (UI) components that can be reused across different screens or parts of your app. These components help maintain consistency and modularity in your code.
 
-## Step 2: Start your Application
+**ios**: Similar to the Android folder, the ios folder contains all the iOS-specific code and resources for your React Native app. It includes Xcode project files, Swift or Objective-C source code, and asset files specific to iOS.
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+**navigation**: The navigation folder typically holds the configuration and implementation of your app's navigation. This can include setting up a stack navigator, tab navigator, or any other navigation structure your app requires. It helps manage the flow between different screens or sections of your app.
 
-### For Android
+**provider**: The provider folder may contain context providers for state management
 
-```bash
-# using npm
-npm run android
+**screens**: The screens folder is where you define the individual screens or views of your app. Each screen typically corresponds to a specific part of your app's user interface. It's where you write the code for rendering and managing the content of those screens.
 
-# OR using Yarn
-yarn android
-```
+**theme**: The theme folder can include files related to styling and theming your app. It may contain style definitions, color schemes, or any other assets used for consistent styling across your app.
 
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+**App.tsx**: This file is usually the entry point of your React Native app. It's where you set up your app's main components, such as navigation, providers, and any initial configurations. It's the starting point of your app's JavaScript or TypeScript code.
