@@ -1,9 +1,21 @@
-import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { Header, HomeCards, HomeChartCard, PressureFlow, TopCard } from '../components'
+/**
+ * @author Pumani bCPAP
+ * @description
+ * This code sets up a Home screen for a React Native app.
+ * It displays various components like a header, cards (temperature & humidity), 
+ * and a flow rate chart card.
+ * It also handles loading and displays a loading indicator while fetching data.
+ * The Toast component shows a welcome message to the user.
+ */
+// libraries
 import Toast from 'react-native-toast-message'
+import React, { useEffect, useState } from 'react'
+import { SafeAreaView, ScrollView, StyleSheet } from 'react-native'
+
+// custom components
 import useApp from '../provider/AppProvider'
 import { ScreenLoader } from '../components'
+import { Header, HomeCards, HomeChartCard, PressureFlow, TopCard } from '../components'
 
 const HomeScreen: React.FC = () => {
 	const { flowRate } = useApp()

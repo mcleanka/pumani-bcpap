@@ -1,4 +1,4 @@
-# App Structure
+# Pumani bCPAP Structure
 
 React Native is an open-source mobile application framework developed by Facebook that allows you to build mobile apps using JavaScript and React. With React Native, you can create mobile apps for both iOS and Android platforms from a single codebase. It offers several advantages including
 

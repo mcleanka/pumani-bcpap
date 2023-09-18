@@ -1,7 +1,17 @@
+/**
+ * @author Pumani bCPAP Team
+ * @description
+ * this code represents a statistics screen that displays tabular data with
+ * pagination controls and provides visual feedback through loading indicators.
+ */
+
+// libries
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native'
-import { Header, ScreenLoader } from '../components'
 import { DataTable } from 'react-native-paper';
+
+// custom components
+import { Header, ScreenLoader } from '../components'
 
 const data = [
 	{
