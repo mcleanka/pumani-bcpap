@@ -25,3 +25,21 @@ React Native is an open-source mobile application framework developed by Faceboo
 **theme**: The theme folder can include files related to styling and theming your app. It may contain style definitions, color schemes, or any other assets used for consistent styling across your app.
 
 **App.tsx**: This file is usually the entry point of your React Native app. It's where you set up your app's main components, such as navigation, providers, and any initial configurations. It's the starting point of your app's JavaScript or TypeScript code.
+
+##### During the development of a React Native app, several folders are commonly used to organize and manage your project. Here's a breakdown of the most commonly used folders and their purposes:
+
+- **components**: This is where you should store your reusable React components. Organizing your components in this folder helps keep your codebase clean and maintainable.
+
+- **navigation**: The navigation folder is commonly used to manage app navigation and routing. You might find files related to navigation stacks, tabs, and routing configurations here.
+
+- **screens**: This folder typically contains individual screen components for your app. Each screen corresponds to a specific view or screen in your application.
+
+- **assets**: The assets folder is used to store static assets like images, fonts, and other resources that your app requires.
+
+- **styles or theme**: This folder is where you can store your global styles, themes, or style-related utility functions. It helps keep your app's styling organized and consistent.
+
+- **App.tsx** or **index.js**: This is typically the entry point of your app. It's where you set up the initial components, navigation, and any other app-level configurations.
+
+```
+While these are some of the commonly used folders in a React Native project, keep in mind that the project structure can vary depending on personal preferences and project requirements. It's essential to maintain a clear and organized structure to make your codebase more manageable as your app grows.
+```
