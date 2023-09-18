@@ -1,8 +1,18 @@
+/**
+ * @author Pumani bCPAP Team
+ * @description
+ * this code represents a settings screen where users can adjust the flow rate, 
+ * and it provides visual feedback through loading indicators and toast messages
+ * when adjustments are made.
+ */
+// libries
+import Toast from 'react-native-toast-message';
 import React, { useEffect, useState } from 'react';
 import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
 import { Button, Card, Paragraph, TextInput, Title } from 'react-native-paper';
+
+// custom components
 import theme from '../theme';
-import Toast from 'react-native-toast-message';
 import { Header, ScreenLoader } from '../components';
 import useApp from '../provider/AppProvider';
 
