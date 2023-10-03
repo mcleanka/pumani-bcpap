@@ -78,7 +78,10 @@ const HomeScreen: React.FC = () => {
 				}
 			})
 			.catch(error => {
-				console.error('Error fetching data:', error);
+				Toast.show({
+					type: 'error',
+					text2: 'Error fetching data:' + error
+				});
 			})
 	};
 
