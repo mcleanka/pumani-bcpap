@@ -1,22 +1,17 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
 import ContentHeader from './ContentHeader'
 import QuickLink from './QuickLink'
 
+type Props = {
+	data: {
+		id: number,
+		title: string,
+		count: string,
+	}[]
+}
 
-const HomeCards: React.FC = () => {
-	const navigation = useNavigation<any>()
-
-	const links = [
-		{
-			id: 1, title: 'Temperature', count: '24°C',
-		},
-		{
-			id: 2, title: 'Humidity', count: '78%',
-		},
-	];
-
+const HomeCards: React.FC<Props> = ({ data }) => {
 	return (
 		<View>
 			<ContentHeader title='Weather conditions' />
@@ -24,7 +19,7 @@ const HomeCards: React.FC = () => {
 			<View style={styles.container}>
 
 				{
-					links.map((link, index) => (
+					data.map((link, index) => (
 						<QuickLink
 							key={index}
 							title={link.title}

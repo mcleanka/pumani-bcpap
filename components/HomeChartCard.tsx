@@ -10,7 +10,7 @@ const HomeChartCard: React.FC<PropsWithChildren<Props>> = ({ title, children }) 
 	return (
 		<View style={styles.cardContainer}>
 
-			<ContentHeader title='Flow rate' />
+			<ContentHeader title={title} />
 
 			<View style={{
 				justifyContent: 'center',
