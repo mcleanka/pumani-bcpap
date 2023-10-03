@@ -18,7 +18,7 @@ const TopCard: React.FC<Prop> = ({ count }) => {
 		}]}>
 			<Text style={styles.count}>{count ?? 0}</Text>
 			<Text style={styles.description}>
-				Flow rate (Pa/sec)
+				Speed (Rev/sec)
 			</Text>
 		</View>
 	);
