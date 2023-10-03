@@ -7,11 +7,12 @@
 
 // libries
 import React, { useEffect, useState } from 'react'
-import { SafeAreaView } from 'react-native'
+import { SafeAreaView, ScrollView } from 'react-native'
 import { DataTable } from 'react-native-paper';
 
 // custom components
 import { Header, ScreenLoader } from '../components'
+import axios from 'axios';
 
 const data = [
 	{
@@ -41,9 +42,9 @@ const data = [
 ]
 
 const StatisticsScreen: React.FC = () => {
-	const [items] = useState(data);
+	const [items, setItems] = useState([]);
 	const [page, setPage] = useState<number>(0);
-	const [numberOfItemsPerPageList] = useState([2, 3, 4]);
+	const [numberOfItemsPerPageList] = useState([8, 15, 25, 50, 100]);
 	const [itemsPerPage, onItemsPerPageChange] = useState(
 		numberOfItemsPerPageList[0]
 	);
@@ -55,13 +56,26 @@ const StatisticsScreen: React.FC = () => {
 		setPage(0);
 	}, [itemsPerPage]);
 
+	const fecthData = async () => {
+		setIsLoading(true);
+
+		await axios.get('http://192.168.1.127/pumani/fetch-data.php')
+			.then((response) => response.data)
+			.then(result => {
+				// Assuming your API returns an array of records
+				if (data.length > 0)
+					setItems(result.data);
+			})
+			.catch(error => {
+				console.error('Error fetching data:', error);
+			})
+			.finally(() => {
+				setIsLoading(false);
+			})
+	}
+
 	useEffect(() => {
-		const interval = setTimeout(() => {
-			setIsLoading(false)
-		}, 1000);
-
-		return () => clearInterval(interval);
-
+		fecthData()
 	}, [])
 
 	if (isLoading) return (<ScreenLoader size={'large'} />);
@@ -70,35 +84,43 @@ const StatisticsScreen: React.FC = () => {
 		<SafeAreaView style={{ flex: 1, backgroundColor: '#fff', marginBottom: 0, }}>
 			<Header title='Statistics' />
 
-			<DataTable>
-				<DataTable.Header>
-					<DataTable.Title>Pres (Pa/sec)</DataTable.Title>
-					<DataTable.Title>Temp (°C)</DataTable.Title>
-					<DataTable.Title>Hum (%)</DataTable.Title>
-					<DataTable.Title numeric>Time</DataTable.Title>
-				</DataTable.Header>
+			<ScrollView contentContainerStyle={{
+				marginHorizontal: 15,
+				backgroundColor: '#fff',
+				paddingHorizontal: 0,
+				paddingTop: 0,
+				marginBottom: 30
+			}}>
+				<DataTable>
+					<DataTable.Header>
+						<DataTable.Title>Pres (Pa/sec)</DataTable.Title>
+						<DataTable.Title>Temp (°C)</DataTable.Title>
+						<DataTable.Title>Hum (%)</DataTable.Title>
+						<DataTable.Title>Time</DataTable.Title>
+					</DataTable.Header>
 
-				{items.slice(from, to).map((item, key) => (
-					<DataTable.Row key={key}>
-						<DataTable.Cell>{item.pressure}</DataTable.Cell>
-						<DataTable.Cell>{item.temperature}</DataTable.Cell>
-						<DataTable.Cell>{item.humidity}</DataTable.Cell>
-						<DataTable.Cell numeric>{item.time}</DataTable.Cell>
-					</DataTable.Row>
-				))}
+					{items.length > 0 && items.slice(from, to).map((item, key) => (
+						<DataTable.Row key={key}>
+							<DataTable.Cell>{item?.BreathingRate}</DataTable.Cell>
+							<DataTable.Cell>{item?.Temperature}</DataTable.Cell>
+							<DataTable.Cell>{item?.Humidity}</DataTable.Cell>
+							<DataTable.Cell>{item.CreatedAt}</DataTable.Cell>
+						</DataTable.Row>
+					))}
 
-				<DataTable.Pagination
-					page={page}
-					numberOfPages={Math.ceil(items.length / itemsPerPage)}
-					onPageChange={(page) => setPage(page)}
-					label={`${from + 1}-${to} of ${items.length}`}
-					numberOfItemsPerPageList={numberOfItemsPerPageList}
-					numberOfItemsPerPage={itemsPerPage}
-					onItemsPerPageChange={onItemsPerPageChange}
-					showFastPaginationControls
-				// selectPageDropdownLabel={'Show'}
-				/>
-			</DataTable>
+					<DataTable.Pagination
+						page={page}
+						numberOfPages={Math.ceil(items.length / itemsPerPage)}
+						onPageChange={(page) => setPage(page)}
+						label={`${from + 1}-${to} of ${items.length}`}
+						numberOfItemsPerPageList={numberOfItemsPerPageList}
+						numberOfItemsPerPage={itemsPerPage}
+						onItemsPerPageChange={onItemsPerPageChange}
+						showFastPaginationControls
+						selectPageDropdownLabel={'Show'}
+					/>
+				</DataTable>
+			</ScrollView>
 
 		</SafeAreaView>
 	)
