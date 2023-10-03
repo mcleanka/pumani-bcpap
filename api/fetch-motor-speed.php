@@ -1,31 +1,26 @@
 <?php
 // Create a database connection
-include_once 'connection.php';
+include 'connection.php';
 
 // Step 1: Check if it's a GET request
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    // Fetch all data from the table
-    $sql = "SELECT * FROM patient ORDER BY id DESC LIMIT 50;";
-    $result = $conn->query($sql);
 
-    $data = array();
+    // Fetch the last record from the table
+    $sql = "SELECT * FROM settings ORDER BY ID DESC LIMIT 1";
+    $result = $conn->query($sql);
+    $row = [];
 
     if ($result->num_rows > 0) {
-
-        while ($row = $result->fetch_assoc()) {
-            $data[] = $row;
-        }
-
+        $row = $result->fetch_assoc();
         http_response_code(200); // HTTP 200 OK
-        echo json_encode([
-            "data" => $data,
-        ]);
+        echo json_encode($row);
     } else {
-        http_response_code(201); // HTTP 404 Not Found
+        http_response_code(404); // HTTP 404 Not Found
         echo json_encode([
-            "data" => $data,
+            "data" => $row,
             "message" => "No data found",
         ]);
+
     }
 
     // Close the database connection
