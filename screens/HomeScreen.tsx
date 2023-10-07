@@ -52,7 +52,7 @@ const HomeScreen: React.FC = () => {
 	}, [chartDataPoint]);
 
 	const fetchData = async () => {
-		await axios.get('http://192.168.1.127/pumani/fetch-record.php')
+		await axios.get('http://192.168.50.9/pumani/api/fetch-record.php')
 			.then((response) => response.data)
 			.then(result => {
 				// Assuming your API returns an array of records
@@ -78,7 +78,10 @@ const HomeScreen: React.FC = () => {
 				}
 			})
 			.catch(error => {
-				console.error('Error fetching data:', error);
+				Toast.show({
+					type: 'error',
+					text2: 'Error fetching data:' + error
+				});
 			})
 	};
 
