@@ -52,7 +52,7 @@ const HomeScreen: React.FC = () => {
 	}, [chartDataPoint]);
 
 	const fetchData = async () => {
-		await axios.get('http://192.168.14.9/pumani/api/fetch-record.php')
+		await axios.get('http://192.168.155.9/pumani/api/fetch-record.php')
 			.then((response) => response.data)
 			.then(result => {
 				// Assuming your API returns an array of records

@@ -61,7 +61,7 @@ const SettingsScreen: React.FC = () => {
 			formData.append('flow_rate', flowRate);
 			formData.append('age_group', value.ageGroup);
 
-			axios.post('http://192.168.14.9/pumani/api/save-motor-speed.php', formData, {
+			axios.post('http://192.168.155.9/pumani/api/save-motor-speed.php', formData, {
 				headers: {
 					'Content-Type': 'multipart/form-data',
 				},

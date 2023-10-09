@@ -24,7 +24,7 @@ int servoPin = 2; // 2,4,5,12-19,21-23,25-27,32-33
 // Network settings
 const char *ssid = "Zonse Inv.";
 const char *password = "Ccera-2017";
-const char *apiEndpoint = "http://192.168.50.9/pumani/api/save-data.php";
+const char *apiEndpoint = "http://192.168.14.9/pumani/api/save-data.php";
 
 const byte ROWS = 4; // Four rows
 const byte COLS = 4; // Four columns
