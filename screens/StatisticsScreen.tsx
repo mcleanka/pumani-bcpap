@@ -59,7 +59,7 @@ const StatisticsScreen: React.FC = () => {
 	const fecthData = async () => {
 		setIsLoading(true);
 
-		await axios.get('http://192.168.50.9/pumani/api/fetch-data.php')
+		await axios.get('http://192.168.155.9/pumani/api/fetch-data.php')
 			.then((response) => response.data)
 			.then(result => {
 				// Assuming your API returns an array of records
